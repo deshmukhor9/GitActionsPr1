@@ -2,7 +2,7 @@ name: ETL pipeline
 on:
     push:
         branches:
-            main
+            master
 jobs:
     extract_data:
         runs-on: ubuntu-latest
