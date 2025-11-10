@@ -36,18 +36,44 @@
 #             - name: run load.py
 #               run: python load.py
 
-name: pandas pipeline
+# name: pandas pipeline
+# on:
+#     push:
+#         branches:
+#             master
+# jobs: 
+#     pandas_data_extract:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: checkout code
+#               uses: actions/checkout@v2
+#             - name: install required dependencies
+#               run: pip install -r requirements.txt
+#             - name: run pandas.py
+#               run: python pandas_data.py
+
+name: Data quality
 on:
     push:
-        branches:
+        branches: 
             master
 jobs: 
-    pandas_data_extract:
+    install_python_with_dependencies:
         runs-on: ubuntu-latest
         steps:
             - name: checkout code
               uses: actions/checkout@v2
-            - name: install required dependencies
+            - name: python setup
+              uses: actions/setup-python@v4
+              with:
+                    python-version: '3.10'
+            - name: print python version
+              run: python --version
+            - name: install dependencies
               run: pip install -r requirements.txt
-            - name: run pandas.py
-              run: python pandas_data.py
+    run_test_calculator_with_pytest:
+        runs-on: ubuntu-latest
+        needs: install_python_with_dependencies
+        steps:
+            - name: run test_calculator.py
+              run: pytest --cov=calculator --cov-report=term
