@@ -72,7 +72,7 @@ jobs:
             - name: install dependencies
               run: pip install -r requirements.txt
             - name: run test_calculator.py
-              run: pytest --cov=calculator --cov-report=term 
+              run: pytest --cov=calculator --cov-report=term --cov-report=html
             - name: download code
               uses: actions/upload-artifact@v4
               with:
