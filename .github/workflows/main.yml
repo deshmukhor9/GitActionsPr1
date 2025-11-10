@@ -71,9 +71,9 @@ jobs:
               run: python --version
             - name: install dependencies
               run: pip install -r requirements.txt
-    run_test_calculator_with_pytest:
-        runs-on: ubuntu-latest
-        needs: install_python_with_dependencies
-        steps:
             - name: run test_calculator.py
               run: pytest --cov=calculator --cov-report=term
+    # run_test_calculator_with_pytest:
+    #     runs-on: ubuntu-latest
+    #     needs: install_python_with_dependencies
+    #     steps:
