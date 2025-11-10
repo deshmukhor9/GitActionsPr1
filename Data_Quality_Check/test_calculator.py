@@ -15,5 +15,6 @@ def test_div1():
     assert div(10,5) == 2
 
 def test_div2():
-    assert div(10,0) == 10
+    with pytest.raises(ValueError):
+        div(10,0)
 
