@@ -10,7 +10,7 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v2
             - name: run extract.py
-              uses: python extract.py
+              run: python extract.py
 
     transform_data:
         runs-on: ubuntu-latest
@@ -18,7 +18,7 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v2
             - name: run transform.py
-              uses: python transform.py
+              run: python transform.py
 
     load_data:
         runs-on: ubuntu-latest
@@ -26,4 +26,4 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v2
             - name: run load.py
-              uses: python load.py
+              run: python load.py
